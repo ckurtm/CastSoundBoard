@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SoundBoard</string>
+
+    <string name="app_id">INSERT YOUR APP ID HERE</string>
+
+
+    <string name="cast_menu">Cast</string>
+    <string name="switch_rain">Rain</string>
+    <string name="switch_wolves">Wolves</string>
+    <string name="switch_birds">Birds</string>
+    <string name="switch_thunder">Thunder</string>
+</resources>

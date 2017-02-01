@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+
+    <android.support.v7.app.MediaRouteButton
+        android:id="@+id/media_route_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:mediaRouteTypes="user"
+        android:visibility="gone" />
+
+    <Switch
+        android:id="@+id/switch_rain"
+        android:text="@string/switch_rain"
+        style="@style/ToggleStyle" />
+
+    <Switch
+        android:id="@+id/switch_birds"
+        android:text="@string/switch_birds"
+        style="@style/ToggleStyle"/>
+
+    <Switch
+        android:id="@+id/switch_wolves"
+        android:text="@string/switch_wolves"
+        style="@style/ToggleStyle"/>
+
+    <Switch
+        android:id="@+id/switch_thunder"
+        android:text="@string/switch_thunder"
+        style="@style/ToggleStyle"
+        />
+
+</LinearLayout>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soundboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Barrio" rel="stylesheet">
+    <script type="application/javascript" src="sound_loader.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+
+</head>
+<body>
+<div>
+    <label id='birds' class="text">Birds</label>
+</div>
+<div>
+    <label id='wolves' class="text">Wolves</label>
+</div>
+<div>
+    <label id='rain' class="text">Rain</label>
+</div>
+<div>
+    <label id='thunder' class="text">Thunder</label>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        loadSounds();
+        cast.receiver.logger.setLevelValue(cast.receiver.LoggerLevel.DEBUG);
+        window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+        console.log('starting the receiver application');
+
+        castReceiverManager.onReady = function(event) {
+            console.log('receiver application is ready: ' + JSON.stringify(event.data));
+            window.castReceiverManager.setApplicationState('Application status is ready...');
+        };
+
+        castReceiverManager.onSenderConnected = function(event) {
+            console.log('sender application connected: ' + event.data);
+            console.log(window.castReceiverManager.getSender(event.data).userAgent);
+        };
+
+        castReceiverManager.onSenderDisconnected = function(event) {
+            console.log('sender application disconnected: ' + event.data);
+            //if we dont have any connected devices then just close this app, this might not be necessary for your use case though
+            if (window.castReceiverManager.getSenders().length == 0) {
+                window.close();
+            }
+        };
+        //register the namespace that we can handle messaging from. NOTE, THIS SHOULD be the same as the one the SENDER app uses to send messages
+        window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:mbanje.kurt.soundboard');
+
+        //handler for the incoming CastMessageBus message events from sender applications
+        window.messageBus.onMessage = function(event) {
+            console.log('Message [' + event.senderId + ']: ' + event.data);
+            var json = JSON.parse(event.data);
+            processMessage(json);
+        }
+
+        // initialize the CastReceiverManager with an application status message
+        window.castReceiverManager.start({statusText: 'Application is starting'});
+        console.log('Receiver Manager started');
+    };
+
+</script>
+</body>
+</html>
