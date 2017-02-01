@@ -16,7 +16,7 @@ This implementation is in no way production ready and only serves as a demonstra
 * Run the Android app and you should be able to see a similar app load on your cast device as show in video below.
 
 ## DEMO VIDEO
-[![demo video running app on android device and connecting to Nvidia Shield android Tv](http://img.youtube.com/vi/T-RBbU8QHahs8/0.jpg)](https://youtu.be/RBbU8QHahs8)
+[![demo video running app on android device and connecting to Nvidia Shield android Tv](http://img.youtube.com/vi/RBbU8QHahs8/0.jpg)](https://youtu.be/RBbU8QHahs8)
 
 
 ## Bugs & Pull Requests
